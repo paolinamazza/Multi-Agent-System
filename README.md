@@ -56,5 +56,35 @@ To directly try our agents, you can run Streamlit by:
   ```bash
   !streamlit run app.py
   ```
-- **B)** by running streamlit run app.py from the root of the repository.
+- **B)** by running from the root of the repository
+  ```bash
+  streamlit run app.py
+  ```
+
+# Data Analysis & Preprocessing
+
+We started our project by conducting an extensive EDA to assess data quality, structure, and completeness across all four datasets used in the system. Each dataset captures a different facet of public sector personnel, allowing for a multi-dimensional exploration of digital service access, salary distribution, mobility, and socio-demographic patterns.
+
+- **EntryAccessoAmministrati_202501.csv** contains portal access records, grouped by region of residence, administration type, age range, gender, and authentication method. This dataset reflects how users interact with digital public services.
+- **EntryAccreditoStipendi_202501.csv** reports the number of salary payments disbursed, segmented by administration, municipality, gender, age group, and payment method (e.g., bank transfer, prepaid card).
+- **EntryPendolarismo_202501.csv** captures commuting patterns: including workplace province and municipality, whether employees work in their home municipality, commuting distance ranges (min/max), and employee counts per route.
+- **EntryAmministratiPerFasciaDiReddito_202501.csv** provides a demographic breakdown of personnel by region, sector, income bracket, age group, and gender, giving insight about the distribution of public employees across income levels.
+
+Several columns are shared across datasets, such as gender, administration, municipality, age_min/age_max, and region_of_residence, that will enable meaningful joins and cross-analysis.
+
+The structure of the datasets reveals key behavioral and demographic dimensions of the public sector workforce:
+
+- **Regional and Sectoral Engagement Gaps**: We observed strong disparities in how regions engage with public digital services. For example, Campania and Lazio stand out, each logging over 218000 portal accesses. Similarly, the Ministry of Education dominates both platform usage and salary counts, likely due to its scale and workforce size.
+- **Gender Discrepancies**: Although women account for over 61% of salary recipients, they represent only 46% of portal users. This suggests that female employees might be underrepresented in digital platform interactions or face access limitations.
+- **Authentication Preferences**: SPID (the Italian Public Digital Identity System) is now the default and most used login method, while CIE (Electronic ID) and CNS (National Services Card) remain marginal, possibly due to usability or availability issues.
+- **Mobility Patterns**: Commuting data reveals that 3 out of 4 public employees travel outside their home municipality. Major commuting hubs include Rome, Naples, and Milan, with most travel occurring over short distances, but long-range commuting is still non-negligible in some areas.
+- **Territorial Gaps**: Interestingly, several regions appear in salary or employment records but do not appear in access data, pointing to territorial gaps in the uptake of digital services.
+
+A major issue identified early was inconsistent column types. Several fields that should be numerical (e.g., age_max, income_bracket_min, distance_max_km) were incorrectly stored as strings or floats, often due to formatting (e.g., "oltre i 28000"). To resolve this all numeric fields were converted, and textual noise was stripped. This normalization step was crucial for enabling the agents to automatically match columns to user queries, infer correct data types when generating Python code (e.g., numeric vs. categorical), and avoid runtime errors when aggregating, plotting, or filtering data.
+
+Each dataset originally came with heterogeneous Italian column names, but to enable easier semantic interpretation and ensure cross-dataset consistency we translated all columns in English, making sure that columns with the same meaning in different datasets had the same name.
+
+The EDA revealed both strong foundations for analysis and critical preprocessing requirements. Thanks to a standardization effort, all datasets were successfully aligned in terms of column names, data types, and structure. These steps were fundamental to enabling robust querying, seamless code generation, and agent-based reasoning in subsequent phases of the project.
+
+  
 
