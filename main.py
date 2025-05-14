@@ -227,10 +227,10 @@ def InsightBuilder(prompt: str) -> str:
         - What matters is the correct execution of the code!
 	    3. Generate the code.
         JOINS:
-        - df_accesso and df_amministrati: join on "region_of_residence"
-        - df_accesso and df_stipendi: join on "administration"
-        - df_accesso and df_pendolarismo: join on "administration" 
-        - df_pendolarismo and df_stipendi: join on "municipality" if the user asks, for example, "by administration" or "for each administration"
+        - if df_accesso and df_amministrati have to be merged: join on "region_of_residence"
+        - if df_accesso and df_stipendi have to be merged: join on "administration"
+        - if df_accesso and df_pendolarismo have to be merged: join on "administration" 
+        - if df_pendolarismo and df_stipendi have to be merged: join on "municipality" if the user asks, for example, "by administration" or "for each administration"
             OR on "municipality" if the user asks, for example, "by municipality" or "for each administration"
 
     
