@@ -19,6 +19,15 @@ import contextlib
 import traceback
 import tiktoken  
 
+# ----- OPENAI API KEY -----
+openai_api_key = "...."
+os.environ['OPENAI_API_KEY'] = openai_api_key
+
+# Verify that the key is set
+print(f"OpenAI API key set: {bool(openai_api_key)}")
+
+
+
 # ----- LOAD AND PREPARE DATA -----
 df_accesso = pd.read_csv("EntryAccessoAmministrati_202501.csv")
 df_pendolarismo = pd.read_csv("EntryPendolarismo_202501.csv")
@@ -110,13 +119,6 @@ df_accesso["age_max"] = pd.to_numeric(df_accesso["age_max"], errors="coerce").as
 
 
 
-
-# ----- OPENAI API KEY -----
-openai_api_key = "...."
-os.environ['OPENAI_API_KEY'] = openai_api_key
-
-# Verify that the key is set
-print(f"OpenAI API key set: {bool(openai_api_key)}")
 
 
 
