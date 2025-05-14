@@ -84,6 +84,7 @@ You will find the following section in main.py:
 openai_api_key = "...."
 os.environ['OPENAI_API_KEY'] = openai_api_key
 ```
+
 Replace the "...." with your personal OpenAI API key.
 
 
