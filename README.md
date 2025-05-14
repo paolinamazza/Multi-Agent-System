@@ -268,15 +268,31 @@ During the project, we always compared the agents generated Python code to our m
 ## Comparing the Two Agent Architectures in Practice
 
 After having proved the high accuracy of our multi-agent system, we were interested in comparing it to our abandoned local version. The screenshots below show how the two systems—our OpenAI-based agent (light blue background) and the local agent created with Mistral-Nemo (black background)—responded to the identical three questions on topics like gender inequality, incomes, and digital authentication methods.
-
+  
 ### Question 1
-Are there sectors where women both (a) access the portal less often (Accesso) and (b) earn significantly less than men (Stipendi + Amministrati)?
+Calculate the average of the column minimum distance in KM and maximum distance in KM and plot the result in a bar chart.
+![LocalQ11](Images/LocalQ11.jpeg)
+![LocalQ12](Images/LocalQ12.jpeg)
+![LocalQ13](Images/LocalQ13.jpeg)
+![OAQ1](Images/OAQ1.jpeg)
+![OAQ12](Images/OAQ12.jpeg)
 
 ### Question 2
+Are there sectors where women both (a) access the portal less often (Accesso) and (b) earn significantly less than men (Stipendi + Amministrati)?
+![LocalQ21](Images/LocalQ21.jpeg)
+![LocalQ22](Images/LocalQ22.jpeg)
+![OAQ2](Images/OAQ2.jpeg)
+
+### Question 3
 For each economic sector, what is the average minimum and maximum income bracket?
+![LocalQ3](Images/LocalQ3.jpeg)
+![OAQ3](Images/OAQ3.jpeg)
 
 ### Question 3
 What is the most used authentication method to access the portal in each region?
+![LocalQ4](Images/LocalQ4.jpeg)
+![OAQ4](Images/OAQ4.jpeg)
+
 
 The difference is evident right away. The OpenAI agent was also more consistent and more informative. It provided clean, well-formatted answers with readable tables, interpreted ambiguous queries appropriately, and even handled missing data gracefully (e.g., by suggesting alternative approaches when the gender column wasn't present). Above all, its answers always agreed with the available data—it didn't make anything up. 
 
