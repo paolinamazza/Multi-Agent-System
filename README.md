@@ -31,13 +31,6 @@ Our GitHub repository is structured into three main components:
   - re-run the last command,
   - view generated visualizations and results inline.
 
-- **requirements.txt**: The file that includes all the necessary Python libraries and version specifications used in the development of the project (e.g., `openai`, `streamlit`, `matplotlib`, `pandas`, etc.). This setup ensures that any user with Python installed can fully reproduce the functionality and interface of the project, whether to extend it, test it, or deploy it.
-  - To recreate the full environment, simply run the following command from the root of the repository:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
 - **Evaluation_Questions.csv**: This file contains a detailed log of the system evaluation process, including:
   - natural-language queries,
   - the expected output (computed via manual Python code),
@@ -47,19 +40,42 @@ Our GitHub repository is structured into three main components:
 
 - **Additionals/**: A folder containing the code that was not included in our official version but mentioned in the README.
 
+- **requirements.txt**: The file that includes all the necessary Python libraries and version specifications used in the development of the project (e.g., `openai`, `streamlit`, `matplotlib`, `pandas`, etc.). This setup ensures that any user with Python installed can fully reproduce the functionality and interface of the project, whether to extend it, test it, or deploy it.
 ## How to Run
+To run this project locally and ensure everything works as expected, follow these steps:
 
-To directly try our agents, you can run Streamlit by:
+### 1. Download or clone the repository
+```bash
+git clone https://github.com/paolinamazza/Multi-Agent-Ststem.git
+cd Multi-Agent-System
+```
 
-- **A)** Going to the end of the `main.ipynb` notebook in the Streamlit section and running the cell:
+### 2. Create and activate a virtual environment
+It is highly recommended to use a virtual environment to avoid conflicts with other Python packages.
+**On macOS/Linux:**
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+**On Windows:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
-  ```bash
-  !streamlit run app.py
-  ```
-- **B)** by running from the root of the repository
-  ```bash
-  streamlit run app.py
-  ```
+### 3. Install all dependencies
+You can recreate the whole Python environment by just running:
+```bash
+pip install -r requirements.txt
+```
+This will install all required libraries (such as openai, streamlit, pandas, matplotlib, etc.) listed in the requirements.txt file.
+
+### 4. Run the application
+To directly try our agents, you can run Streamlit in one of the following ways:
+- **A)** Going to the end of the `main.ipynb` notebook in the Streamlit section and running the cell: ```bash !streamlit run app.py ``` 
+- **B)** by running from the root of the repository ```bash streamlit run app.py ```
+After these steps, the Streamlit interface will open in your browser, allowing you to interact with the agents through a chat-based interface.
+
 
 # Data Analysis & Preprocessing
 
