@@ -6,7 +6,7 @@
 
 # Introduction
 
-This project examines the design and creation of an intelligent, modular multi-agent system to natural language-based data analysis and visualization. The system was built to provide an accessible, flexible, and auditable interface that allows users, especially non-technical ones, to query complex public sector data using easy conversation-based queries.
+This project examines the design and creation of an intelligent, modular multi-agent system that takes natural language-based user query as input and produces accurate data analysis and visualization.
 
 The overarching issue addressed in this project is how to bridge the gap between unstructured user input and structured data analysis, without invoking rigid pre-programmed logic. To do this, we designed a multi-agent system powered by OpenAI's newly announced Agent SDK, which allows function-aware agents to interpret instructions, call tools, and coordinate tasks in a modular and composable way.
 
@@ -332,6 +332,5 @@ Furthermore, our evaluation focused primarily on fixed datasets. Future work sho
 
 Another promising direction could be integrating a more robust semantic understanding layer to improve dataset matching, as well as extending support to multilingual queries.
 
-Lastly, although we experimented with merging agents for simplicity, results suggested that maintaining modularity ensures better performance, a trade-off worth exploring further in dynamic or scalable deployments.
 
 
