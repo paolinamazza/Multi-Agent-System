@@ -130,16 +130,7 @@ While this system achieved high modularity and interpretability, it required com
 The greatest trade-off in our opinion was performance: while privacy-preserving and locally executable, the system was slower, more fragile, and almost not responsive at all to ambiguous queries.
 
 ## OpenAI SDK Implementation (Final Architecture)
-
-Our second and definitive approach focuses on increasing the agent's reasoning power: it adopts a modular multi-agent architecture powered by the newly released OpenAI Agent SDK, a tool introduced during the same weeks as this project’s development. The Agent SDK represents a significant innovation in the field of intelligent systems, not merely due to its modularity—which is also achievable in other frameworks—but primarily because it provides direct access to OpenAI’s most powerful models, such as GPT-4. This enhances the reasoning depth and reliability of each agent in the system.
-
-The SDK enables function-aware agents to communicate, orchestrate decisions, and execute structured workflows autonomously. Unlike traditional local LLM pipelines, which may be constrained by limited model capacity or hardware, this cloud-based approach supports:
-
-- Agent roles with persistent instructions
-- Composable tools (via `@function_tool`) that simulate external APIs or operations
-- Structured handoffs and routing logic between agents
-
-All while leveraging the advanced cognitive capabilities of state-of-the-art OpenAI models.
+Our second and definitive approach focuses on increasing the agent's reasoning power: it adopts a modular multi-agent architecture powered by the newly released OpenAI Agent SDK, a tool introduced during the same weeks as this project’s development. The Agent SDK represents a significant innovation in the field of intelligent systems, not merely due to its modularity—which is also achievable in other frameworks—but primarily because it provides direct access to OpenAI’s most powerful models, such as GPT-4. This enhances the reasoning depth and reliability of each agent in the system. The SDK enables function-aware agents to communicate, orchestrate decisions, and execute structured workflows autonomously. Unlike traditional local LLM pipelines, which may be constrained by limited model capacity or hardware, this cloud-based approach supports agent roles with persistent instructions, composable tools (via @function_tool) that simulate external APIs or operations, and structured handoffs and routing logic between agents—all while leveraging the advanced cognitive capabilities of state-of-the-art OpenAI models.
 
 ### Agent Architecture
 
@@ -165,6 +156,9 @@ All tools are implemented with `@function_tool`, exposing functionality to the a
 - **InsightBuilder**: Understands, parses the query and produces a complete, modular Python script (data loading, filtering, aggregation, plotting or computation).
 - **CodeRunner**: Executes the generated code in a controlled namespace, capturing stdout output.
 - **ResultExplainer**: Explains the results based on the output and user intent.
+
+![FinalVersion](Images/FinalVersion.png)
+
 
 These tools are reusable and inspectable, and follow a strict workflow including feature identification, dataset validation, aggregation and filtering logic, error handling and plotting conventions (e.g. using subplots if needed).
 
@@ -196,6 +190,9 @@ In the initial version, the `DataProcessingAgent` relied on four tools (although
 - `multi_column`: a group-by aggregation tool handling various aggregation functions like mean, sum, or count, including edge-case handling and synonym resolution.
 - `multi_dataset`: a broad cross-dataset inspection tool for queries involving multiple domains.
 
+![FirstVersion](Images/FirstVersion.png)
+
+
 ### Drawbacks of the Old Architecture
 
 - **High maintenance complexity**: Each tool had hundreds of lines of logic and custom condition handling.
@@ -220,6 +217,8 @@ Eventually, we discovered that `InsightBuilder` alone was capable of:
 
 So we **completely removed** `match_data` from the pipeline.
 
+![SecondVersion](Images/SecondVersion.png)
+
 ### Benefits of the New Prompt-Based Design
 
 - Faster execution (no embedding computation)
@@ -233,6 +232,8 @@ The only limitation was rare minor hallucination, but results remained executabl
 ### Final Note: Agent Fusion Attempt
 
 We also experimented with merging `DataProcessingAgent` and `VisualizationAgent` into a single agent. However, this approach performed worse: the system had difficulties distinguishing whether the query required only insights, only plots, or both.
+![SingleAgent](Images/SingleAgent.png)
+
 
 ### Final Architecture
 
@@ -243,6 +244,9 @@ So, to recap, our final version includes:
   - Use `InsightBuilder` to generate code
   - Use `CodeRunner` to execute it
   - Use `ResultExplainer` to explain it
+
+![FinalVersion](Images/FinalVersion.png)
+
 
 # Evaluation
 
@@ -274,11 +278,11 @@ For each economic sector, what is the average minimum and maximum income bracket
 ### Question 3
 What is the most used authentication method to access the portal in each region?
 
-The difference is evident right away. The OpenAI agent was also more consistent and more informative. It provided clean, well-formatted answers with readable tables, interpreted ambiguous queries appropriately, and even handled missing data gracefully (e.g., by suggesting alternative approaches when the gender column wasn't present). Above all, its answers always agreed with the available data—it didn't make anything up.
+The difference is evident right away. The OpenAI agent was also more consistent and more informative. It provided clean, well-formatted answers with readable tables, interpreted ambiguous queries appropriately, and even handled missing data gracefully (e.g., by suggesting alternative approaches when the gender column wasn't present). Above all, its answers always agreed with the available data—it didn't make anything up. 
 
-The local agent, on the other hand, faced a series of issues: it often couldn't execute the code properly due to type incompatibilities or missing columns, its responses were less readable and sometimes incomplete. When prompted for authentication methods by region, for example, it hallucinated authentication types ("Biometric" and "Password") that weren't even in the dataset.
+The local agent, on the other hand, faced a series of issues: it could not properly understand the user query, resulting in code execution errors due to type incompatibilities or missing columns, and when it did the answer was wrong. When prompted for authentication methods by region, for example, it hallucinated authentication types ("Biometric" and "Password") that weren't even in the dataset, as well as wrongly interpret the results (by saying that only Puglia had "Password" when Basilicata did too). 
 
-This last consideration was especially enlightening. It ensured that the local model, while functional, tended to overfit the data when it lacked sufficient context—a scenario that would be dangerous in the field.
+This last consideration was especially enlightening. It ensured that the local model, while accurate with straight forward queries, for more nuanced ones hallucinated with confidence, resulting in the wrong decisions taken by the user from such erroneous information, negatively affecting countless people. 
 
 Ultimately, these comparisons made it evident that while the local agent provided us with greater control and could be run offline, the OpenAI Agent SDK was the better fit for our project. It was easier to use, smarter in handling real-world data, and much more dependable when it came to producing accurate, grounded results.
 
