@@ -83,8 +83,9 @@ You will find the following section in main.py:
 # ----- OPENAI API KEY -----
 openai_api_key = "...."
 os.environ['OPENAI_API_KEY'] = openai_api_key
-Replace the "...." with your personal OpenAI API key.
 ```
+Replace the "...." with your personal OpenAI API key.
+
 
 ### 5. Run the application
 To directly try our agents, you can run Streamlit in one of the following ways:
