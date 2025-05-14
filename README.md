@@ -114,7 +114,7 @@ After testing both paths, we ultimately chose the OpenAI Agent SDK for our final
 
 ## Local Agent Implementation (Initial Prototype)
 
-Our first prototype followed a local-first approach, prioritizing user control and data protection. The system was designed around the mistral-nemo model, chosen for its balance between performance and compute requirements. Although it is not part of our official project, we decided to include in the repository its code, that you can find in the `local_agent_project.py` file.
+Our first prototype followed a local-first approach, prioritizing user control and data protection. The system was designed around the mistral-nemo model, chosen for its balance between performance and compute requirements. Although it is not part of our official project, we decided to include in the repository its code, that you can find in the `local_agent_project.py` file in the `Additionals/` folder.
 
 To support querying of arbitrary datasets without prior preprocessing, we implemented a column caching system: each dataset was scanned for key metrics (e.g., type, missing values, value range) and cached locally. This metadata was later used to adapt prompts and automatically clean or transform the data before analysis.
 
@@ -183,7 +183,7 @@ As mentioned earlier, as we progressed through the project, we realized that ado
 
 While the **Visualization Agent** was already modular and robust from the beginning, the **Data Processing Agent** had originally been built using a much more hardcoded and rigid toolset.
 
-In the initial version, the `DataProcessingAgent` relied on four tools (although they are not part of our official project, we decided to include in the repository their code, that you can find in the `hardcoded_DataProcessAgent_Tools.py` file):
+In the initial version, the `DataProcessingAgent` relied on four tools (although they are not part of our official project, we decided to include in the repository their code, that you can find in the `hardcoded_DataProcessAgent_Tools.py` file in the `Additionals/` folder):
 
 - `match_data`: a semantic matching engine using LlamaIndex embeddings to identify relevant datasets and columns based on the user’s query. Based on its output, the `DataProcessingAgent` would call one of the other three tools.
 - `single_column`: a statistical analysis tool for a single column, covering mean, variance, outliers, normality tests, and data quality.
