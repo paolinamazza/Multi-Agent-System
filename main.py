@@ -112,7 +112,7 @@ df_accesso["age_max"] = pd.to_numeric(df_accesso["age_max"], errors="coerce").as
 
 
 # ----- OPENAI API KEY -----
-openai_api_key = "..."
+openai_api_key = "...."
 os.environ['OPENAI_API_KEY'] = openai_api_key
 
 # Verify that the key is set
