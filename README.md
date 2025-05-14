@@ -77,7 +77,14 @@ pip install -r requirements.txt
 This will install all required libraries (such as openai, streamlit, pandas, matplotlib, etc.) listed in the requirements.txt file.
 
 ### 4. Set the OpenAI API Key
-To
+To use the OpenAI-powered agents, you need to provide a valid API key. This is done directly in the `main.py` file, right after the library imports.
+You will find the following section in main.py:
+```bash
+# ----- OPENAI API KEY -----
+openai_api_key = "...."
+os.environ['OPENAI_API_KEY'] = openai_api_key
+Replace the "...." with your personal OpenAI API key.
+```
 
 ### 5. Run the application
 To directly try our agents, you can run Streamlit in one of the following ways:
