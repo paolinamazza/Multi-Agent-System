@@ -1,3 +1,9 @@
+# Multi Agent System for NoiPA
+**Team Members**:
+- Paolina Beatrice Mazza (p.mazza@studenti.luiss.it)
+- Carlotta Menasci (carlotta.menasci@studenti.luiss.it)
+- Alessandro Pausilli (alessandro.pausillo@studenti.luiss.it)
+
 # Introduction
 
 This project examines the design and creation of an intelligent, modular multi-agent system to natural language-based data analysis and visualization. The system was built to provide an accessible, flexible, and auditable interface that allows users, especially non-technical ones, to query complex public sector data using easy conversation-based queries.
@@ -70,7 +76,10 @@ pip install -r requirements.txt
 ```
 This will install all required libraries (such as openai, streamlit, pandas, matplotlib, etc.) listed in the requirements.txt file.
 
-### 4. Run the application
+### 4. Set the OpenAI API Key
+To
+
+### 5. Run the application
 To directly try our agents, you can run Streamlit in one of the following ways:
 - **A)** Going to the end of the `main.ipynb` notebook in the Streamlit section and running the cell: ```bash !streamlit run app.py ``` 
 - **B)** by running from the root of the repository ```bash streamlit run app.py ```
