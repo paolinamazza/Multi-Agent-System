@@ -96,7 +96,7 @@ dataframes = {
     "df_accesso": df_accesso
 }
 
-openai_api_key = "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"
+openai_api_key = "..."
 os.environ['OPENAI_API_KEY'] = openai_api_key
 
 
@@ -435,24 +435,24 @@ Robustness:
 @function_tool
 def single_column(dataset_name: str, column: str) -> Dict[str, Any]:
     """
-    🧠 Tool Name: single_column
-    🎯 Purpose: Perform a complete statistical summary (central tendency, dispersion, shape, outliers, quality)
+    Tool Name: single_column
+    Purpose: Perform a complete statistical summary (central tendency, dispersion, shape, outliers, quality)
                on a single numeric or categorical column from one of the four real datasets.
 
-    # 🛠️ Tool-Calling Guidance:
+    # Tool-Calling Guidance:
     - Use this tool when the user asks about statistics like mean, median, outliers, missing values, or the shape of a single column.
     - Works for both numeric and categorical columns.
     - DO NOT guess: if the column is not found, return an error.
     - If the column is categorical (object or category), it will automatically delegate to `analyze_categorical_data`.
 
-    # 🧭 Planning Strategy:
+    # Planning Strategy:
     1. Validate dataset and column existence.
     2. Determine if the column is numeric or categorical.
     3. For numeric: compute descriptive stats, outliers, normality, and context.
     4. For categorical: compute frequencies, entropy, and context.
     5. Add contextual breakdown if available (region, gender, sector, etc.)
 
-    # 📤 Output Format:
+    # Output Format:
     - Return a minimal answer and in natural language
     - ONLY return what the user asked, not more and not less.
     - Errors must be minimized as much as possible. If you have an error, reparaphrase the problem and try to solve it until you find the solution.
@@ -531,7 +531,7 @@ def single_column(dataset_name: str, column: str) -> Dict[str, Any]:
         binned_values = pd.cut(series, bins=bin_edges, labels=bin_labels)
         value_frequencies = binned_values.value_counts().sort_index().to_dict()
 
-    # Normality test (Shapiro-Wilk)
+    # Normality test 
     # Only perform if we have enough data but not too much
     normality_test = {}
     if 3 <= len(series) <= 5000:  # Shapiro-Wilk works best on this range
