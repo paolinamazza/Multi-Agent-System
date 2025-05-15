@@ -176,15 +176,15 @@ column_description_map = {
 # --- Dataset Info ---
 dataset_info = {
     "accesso": {
-        "description": "Region of residence, type of administration, gender, age groups, access methods (e.g., SPID), and total number of users per group",
+        "description": "Region of residence, administration, gender, age groups, access methods, and total number of users per group",
         "dataframe": df_accesso
     },
     "pendolarismo": {
-        "description": "Commuting distances (min, max), province and municipality of the office, administration name, whether municipality matches office location, and number of commuting users",
+        "description": "Commuting distances (min, max), province and municipality of the office, administration, whether municipality matches office location, and number of commuting users",
         "dataframe": df_pendolarismo
     },
     "amministrati": {
-        "description": "Income bracket ranges, maximum tax rates, age and gender distribution, organizational unit, region of residence, and users count per bracket",
+        "description": "Income bracket ranges, maximum tax rates, age, gender, organizational unit, region of residence, and users count per bracket",
         "dataframe": df_amministrati
     },
     "stipendi": {
