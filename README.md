@@ -99,6 +99,7 @@ Replace the "...." with your personal OpenAI API key.
 To directly try our agents, you can run Streamlit in one of the following ways:
 - **A)** Going to the end of the `main.ipynb` notebook in the Streamlit section and running the cell: ```bash !streamlit run app.py ``` 
 - **B)** by running from the root of the repository ```bash streamlit run app.py ```
+
 After these steps, the Streamlit interface will open in your browser, allowing you to interact with the agents through a chat-based interface.
 
 
@@ -305,7 +306,7 @@ Throughout development, we tested the agents continuously to iteratively improve
 
 - **Tool Composability**: By modularizing code generation (`InsightBuilder`), execution (`CodeRunner`), and explanation (`ResultExplainer`), agents remain interpretable and extensible.
 - **Multi-dataset Integration**: The system can combine datasets (e.g., Access + Stipendi + Amministrati) in real time, dynamically joining based on column alignment and semantic hints.
-  **Reproducibility**: All results are generated with real datasets using traceable Python code—no hardcoding or hidden logic.
+- **Reproducibility**: All results are generated with real datasets using traceable Python code—no hardcoding or hidden logic.
 
 ### Known Limitations
 
