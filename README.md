@@ -8,7 +8,7 @@
 
 This project examines the design and creation of an intelligent, modular multi-agent system that takes natural language-based user query as input and produces accurate data analysis and visualization.
 
-The overarching issue addressed in this project is how to bridge the gap between unstructured user input and structured data analysis, without invoking rigid pre-programmed logic. To do this, we designed a multi-agent system powered by OpenAI's newly announced Agent SDK, which allows function-aware agents to interpret instructions, call tools, and coordinate tasks in a modular and composable way.
+The overarching issue addressed in this project is how to bridge the gap between unstructured user input and structured data analysis, without relying on rigid pre-programmed logic. To do this, we designed a multi-agent system powered by OpenAI's newly announced Agent SDK, which allows function-aware agents to interpret instructions, call tools, and coordinate tasks in a modular and composable way.
 
 Throughout the project, we used a two-path development methodology: one on local open-source frameworks to give offline independence and confidentiality and the other on cloud-native frameworks to have maximum reasoning capacity and deployment ease. We chose the latter in the end through thorough testing because it had improved performance, scalability, and developer experience.
 
@@ -50,7 +50,7 @@ Our GitHub repository is structured into three main components:
 
 - **Images**: A folder containing all the images present in this README.
 
-- **noipalogo.png**: The logo, created on Canvas, for our Streamlit frontend interface.
+- **noipalogo.png**: The logo, created by us on Canva, for our Streamlit frontend interface.
 
 - **requirements.txt**: The file that includes all the necessary Python libraries and version specifications used in the development of the project (e.g., `openai`, `streamlit`, `matplotlib`, `pandas`, etc.). This setup ensures that any user with Python installed can fully reproduce the functionality and interface of the project, whether to extend it, test it, or deploy it.
 
@@ -59,7 +59,7 @@ To run this project locally and ensure everything works as expected, follow thes
 
 ### 1. Download or clone the repository
 ```bash
-git clone https://github.com/paolinamazza/Multi-Agent-Ststem.git
+git clone https://github.com/paolinamazza/Multi-Agent-System791391.git
 cd Multi-Agent-System
 ```
 
@@ -326,7 +326,7 @@ So, to recap, our final version includes:
 
 # Evaluation & Results
 
-To evaluate the performance of our agents, we conducted a structured comparison against a set of manually written baseline script that we consider the ground truth for each query, that you can find in `Evaluation_Questions.csv`. The purpose was to verify the correctness and robustness of our agents when responding.
+To evaluate the performance of our agents, we conducted a structured comparison against a set of manually written baseline scripts that we consider as ground truth for each query, that you can find in `Evaluation_Questions.csv`. The purpose was to verify the correctness and robustness of our agents when responding.
 
 Each experiment in our evaluation followed this structure:
 
@@ -350,7 +350,7 @@ Throughout development, we tested the agents continuously to iteratively improve
 - **Consistency**: The agents reliably regenerate the same result for deterministic queries, even across sessions.
 - **Reasoning Depth**: They can parse vague or layered requests like and produce correct logic chaining across datasets.
 - **Dynamic Plotting**: Visualizations are always grounded in data and generated live from code, the agents never return static or hallucinated figures (see examples in `Evaluation_Questions.csv`)
-- **Multiple Languages**: They are also able to understand and respond to queries formulated both iEnglish and Italia*, making the system accessible to a broader range of users in public administration contexts.
+- **Multiple Languages**: They are also able to understand and respond to queries formulated both in English and Italian, making the system accessible to a broader range of users in public administration contexts.
 
 ### Key Strengths
 
@@ -366,7 +366,7 @@ Despite strong performance, the system presents a few limitations:
 - **Join Complexity**: Merging datasets with partial overlaps (e.g., inconsistent admin names across files) was the most challenging task. This required injecting explicit logic in `InsightBuilder` to force safe joins with validation steps.
 - **Latency**: On larger queries with multiple tools involved, the system may take several seconds to respond due to live code execution.
 
-## Evaluation with Custom Analytical Queries (provideed by Reply)
+## Evaluation with Custom Analytical Queries
 After verifying the agent's technical accuracy and reproducibility, we tested it using a curated set of five complex analytical queries that were specifically designed to challenge the system.
 
 The queries were formulated to take full advantage of the four NoiPA datasets and aimed to assess the agent’s analytical capabilties. 
@@ -400,7 +400,7 @@ Determine if there is a correlation between the method of portal access (from En
 
 Despite the high level of difficulty and the variety of analysis types required, the agent produced correct and complete answers for all 5 queries. Each response included accurate computations, proper use of the right datasets, and relevant insights or visual outputs when appropriate.
 
-This demonstrates that the agent is not only technically robust, but also semantically intelligent and analytically capable, making it a powerful assistant for real-world public sector data exploration.
+This confirms that the agent is both technically robust and semantically reliable, capable of handling multi-step analytical queries with high precision, making it a powerful assistant for real-world public sector data exploration.
 
 
 
