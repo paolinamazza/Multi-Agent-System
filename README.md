@@ -44,7 +44,7 @@ Our GitHub repository is structured into three main components:
   - a binary field indicating whether the output was correct,
   - a final accuracy metric.
 
-_ **EntryAccessoAmministrati_202501.csv**, **EntryAccreditoStipendi_202501.csv**, **EntryAmministratiPerFasciaDiReddito_202501.csv**, and **EntryPendolarismo_202501.csv**: The four structured datasets, containing public sector administrative information, the project relied on.
+- **EntryAccessoAmministrati_202501.csv**, **EntryAccreditoStipendi_202501.csv**, **EntryAmministratiPerFasciaDiReddito_202501.csv**, and **EntryPendolarismo_202501.csv**: The four structured datasets, containing public sector administrative information, the project relied on.
 
 - **Additionals**: A folder that contains the files with the code that was not included in our official version but mentioned in the README, specifically **hardcoded_DataProcessAgent_Tools.py** and **local_agent_project.py**.
 
@@ -53,7 +53,7 @@ _ **EntryAccessoAmministrati_202501.csv**, **EntryAccreditoStipendi_202501.csv**
 - **noipalogo.png**: The logo, created on Canvas, for our Streamlit frontend interface.
 
 - **requirements.txt**: The file that includes all the necessary Python libraries and version specifications used in the development of the project (e.g., `openai`, `streamlit`, `matplotlib`, `pandas`, etc.). This setup ensures that any user with Python installed can fully reproduce the functionality and interface of the project, whether to extend it, test it, or deploy it.
-- 
+
 ## How to Run
 To run this project locally and ensure everything works as expected, follow these steps:
 
