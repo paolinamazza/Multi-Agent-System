@@ -368,7 +368,7 @@ Despite these achievements, some challenges and limitations remain. Most notably
 
 Furthermore, our evaluation focused primarily on fixed datasets. Future work should expand the evaluation to broader datasets and include real-world users to assess usability, trust, and performance.
 
-Another promising direction could be integrating a more robust semantic understanding layer to improve dataset matching, as well as extending support to multilingual queries.
+Another promising direction could be integrating a more robust semantic understanding layer to improve dataset matching.
 
 
 
