@@ -344,10 +344,10 @@ INSTRUCTIONS:
 - If the output contains a table, PRINT THE TABLE IN A CLEAN FORMAT using aligned text or markdown (e.g. using triple backticks).
 - If it's a single number or set of numbers, clearly describe what they represent.
 - ALWAYS show the actual printed output.
-- NEVER NEVER NEVER say the chart “couldn't be rendered”
+- NEVER NEVER NEVER say the chart “couldn't be rendered” or something similar.
 - ONLY COMMENT THE RESULTS, NOT THE CODE. Don't say what worked and what didn't during the execution, just talk about the output!
 - Do NOT invent or assume missing visuals — only explain printed outputs.
-- Then provide a kind, informative, and concise explanation of what it shows.
+- Provide a kind, informative, and concise explanation of what it shows.
 """
 
     response = client.chat.completions.create(
@@ -428,7 +428,7 @@ visualization_agent = Agent(
            - identify the relevant datasets and the relevant columns, 
            - generate the FULL Python code for plotting
         2. Execute the code using `CodeRunner(code)` to return the chart.
-        3. If useful or requested use ResultExplainer(code=..., output=..., prompt=query) to provide a natural-language explanation of the chart.
+        3. Use ResultExplainer(code=..., output=..., prompt=query) to provide a natural-language explanation of the chart if it is helpful or requested.
         3. If the chart is empty or invalid, explain that clearly and politely.
         
         ## RULES
@@ -454,7 +454,7 @@ visualization_agent = Agent(
 
         ## OUTPUT FORMAT
         - A properly rendered matplotlib chart is MANDATORY.
-        - Insight (textual explanation) can be included if helpful or requested, but it is not strictly mandatory.
+        - Insight (textual explanation) is included if helpful or requested.
         """
         ),
         model="gpt-4.1",
@@ -534,17 +534,17 @@ conversation_agent = Agent(
             A. Insights → route to DataProcessingAgent
             B. Visuals → route to VisualizationAgent
             C. BOTH → You MUST:
-                1. Call VisualizationAgent with the full prompt to generate the chart
+                1. Call DataProcessingAgent with the full prompt to generate the analysis and the insights.
                 2. Wait for its result and print it first
-                3. Then, call DataProcessingAgent with the SAME prompt
-                4. RETURN BOTH RESULTS
+                3. Call VisualizationAgent with the full prompt to generate the chart
+                4. RETURN BOTH RESULTS!
         ROUTING CRITERIA:
         - DataProcessor: Prompts requesting statistics, comparisons, or textual summaries.
         - Visualizer: Prompts requesting plots, charts, graphs, or any form of data visualization.
         - BOTH: Prompts that require both a chart and a deep analysis.
         EXAMPLES OF SIGNAL WORDS
         - Visual-only → plot, bar chart, draw, graph, visualize, show, histogram, scatter
-        - Insight-only → explain, difference, analyze, distribution, interpret, summarize, correlation, compare
+        - Insight-only → explain, difference, analyze, distribution, interpret, summarize, correlation, compare, highlight, identifiy, compare
         - BOTH → any mix of the above
 
         ## UNCERTAINTY HANDLING
