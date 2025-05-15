@@ -52,6 +52,8 @@ Our GitHub repository is structured into three main components:
 
 - **noipalogo.png**: The logo, created by us on Canva, for our Streamlit frontend interface.
 
+- **MULTI-AGENT SYSTEM.pptx**: Our powerpoint presentation of the project.
+
 - **requirements.txt**: The file that includes all the necessary Python libraries and version specifications used in the development of the project (e.g., `openai`, `streamlit`, `matplotlib`, `pandas`, etc.). This setup ensures that any user with Python installed can fully reproduce the functionality and interface of the project, whether to extend it, test it, or deploy it.
 
 ## How to Run
