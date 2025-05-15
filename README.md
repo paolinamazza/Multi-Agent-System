@@ -2,7 +2,7 @@
 **Team Members**:
 - Paolina Beatrice Mazza (p.mazza@studenti.luiss.it)
 - Carlotta Menasci (carlotta.menasci@studenti.luiss.it)
-- Alessandro Pausilli (alessandro.pausillo@studenti.luiss.it)
+- Alessandro Pausilli (alessandro.pausilli@studenti.luiss.it)
 
 # Introduction
 
