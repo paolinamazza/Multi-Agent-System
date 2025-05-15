@@ -366,6 +366,51 @@ Despite strong performance, the system presents a few limitations:
 - **Join Complexity**: Merging datasets with partial overlaps (e.g., inconsistent admin names across files) was the most challenging task. This required injecting explicit logic in `InsightBuilder` to force safe joins with validation steps.
 - **Latency**: On larger queries with multiple tools involved, the system may take several seconds to respond due to live code execution.
 
+## Evaluation with Custom Analytical Queries (provideed by Reply)
+After verifying the agent's technical accuracy and reproducibility, we tested it using a curated set of five complex analytical queries that were specifically designed to challenge the system.
+
+The queries were formulated to take full advantage of the four NoiPA datasets and aimed to assess the agent’s analytical capabilties. 
+
+### Question 1
+Calculate the percentage distribution of access methods to the NoiPA portal among users aged 18-30 compared to those over 50, broken down by region of residence.
+![ReplyQ1](Images/ReplyQ1.png)
+
+
+### Question 2
+Identifiy the most used payment method for each age group and generate a graph showing whether there are correlations between gender and payment method preference.
+![ReplyQ2](Images/ReplyQ2.png)
+
+
+### Question 3
+Analyze commuting data to identify which administrations have the highest percentage of employees who travel more than 20 miles to work.
+![ReplyQ3](Images/ReplyQ3.png)
+
+
+### Question 4
+Compare the gender distribution of staff among the five municipalities with the largest number of employees, highlighting any significant differences in representation by age group.
+![ReplyQ4](Images/ReplyQ4.1.png)
+![ReplyQ4](Images/ReplyQ4.2.png)
+
+
+### Question 5
+Determine if there is a correlation between the method of portal access (from EntryAccessAdministration) and the average commuting distance (from EntryPendularity) for each administration.
+![ReplyQ5](Images/ReplyQ5.png)
+
+
+
+Despite the high level of difficulty and the variety of analysis types required, the agent produced correct and complete answers for all 5 queries. Each response included accurate computations, proper use of the right datasets, and relevant insights or visual outputs when appropriate.
+
+This demonstrates that the agent is not only technically robust, but also semantically intelligent and analytically capable, making it a powerful assistant for real-world public sector data exploration.
+
+
+
+
+
+
+
+
+
+
 
 ## Comparing the Two Agent Architectures in Practice
 
