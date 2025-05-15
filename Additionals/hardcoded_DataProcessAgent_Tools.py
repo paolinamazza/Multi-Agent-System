@@ -173,25 +173,6 @@ column_description_map = {
     }
 }
 
-# --- Dataset Info ---
-dataset_info = {
-    "accesso": {
-        "description": "Region of residence, administration, gender, age groups, access methods, and total number of users per group",
-        "dataframe": df_accesso
-    },
-    "pendolarismo": {
-        "description": "Commuting distances (min, max), province and municipality of the office, administration, whether municipality matches office location, and number of commuting users",
-        "dataframe": df_pendolarismo
-    },
-    "amministrati": {
-        "description": "Income bracket ranges, maximum tax rates, age, gender, organizational unit, region of residence, and users count per bracket",
-        "dataframe": df_amministrati
-    },
-    "stipendi": {
-        "description": "Payment methods, payment counts, gender and age, type of administration, and municipality",
-        "dataframe": df_stipendi
-    }
-}
 
 # --- Parameters ---
 DATASET_SIMILARITY_THRESHOLD = 0.4
@@ -288,13 +269,13 @@ def match_data(query: str) -> Dict:
         "description": " Matched 1 dataset(s): accesso"
     }
     """
+    datasets = [df_accesso,df_pendolarismo, df_amministrati, df_stipendi]
 
     try:
         query_embedding = embedding_model.get_query_embedding(query)
         matched_datasets = []
 
-        for name, info in dataset_info.items():
-            df = info["dataframe"]
+        for df in datasets:
             if df.empty:
                 continue
 
@@ -1108,36 +1089,36 @@ def multi_dataset(query: str) -> Dict[str, Any]:
     - Errors must be minimized as much as possible. If you have an error, reparaphrase the problem and try to solve it until you find the solution.
     """
     # Keyword mapping with more explicit dataset-specific keywords
-    keyword_mapping = {
+    keywords_for_df = {
         "accesso": {
-            "keywords": ["accesso", "access", "administration", "region", "abruzzo"],
+            "keywords": ["accesso", "access", "administration", "region",],
             "columns": ["administration", "region_of_residence"],
             "region_column": "region_of_residence",
             "filter_value": "ABRUZZO"
         },
         "stipendi": {
-            "keywords": ["stipendi", "salary", "administration", "abruzzo"],
+            "keywords": ["municipality", "payment", "payment method", "income", "salary", "administration"],
             "columns": ["administration"],
-            "region_column": None,  # No direct region column
+            "region_column": None,
             "filter_value": None
         },
         "amministrati": {
-            "keywords": ["reddito", "income", "sector", "abruzzo"],
+            "keywords": ["organizational unit","unit", "income","income bracket", "sector", "number of users"],
             "columns": ["sector", "region_of_residence"],
             "region_column": "region_of_residence",
             "filter_value": "ABRUZZO"
         },
         "pendolarismo": {
-            "keywords": ["pendolarismo", "commute", "administration", "abruzzo"],
+            "keywords": ["pendularism", "commute", "travel", "km", "administration"],
             "columns": ["organization"],
-            "region_column": None,  # No direct region column
+            "region_column": None, 
             "filter_value": None
         }
     }
 
     # Identify datasets involved in the query
     involved_datasets = []
-    for dataset, info in keyword_mapping.items():
+    for dataset, info in keywords_for_df.items():
         if any(kw.lower() in query.lower() for kw in info['keywords']):
             involved_datasets.append(dataset)
 
@@ -1161,7 +1142,7 @@ def multi_dataset(query: str) -> Dict[str, Any]:
             df = globals()[f"df_{dataset}"]
 
             # Get dataset-specific information
-            dataset_info = keyword_mapping[dataset]
+            dataset_info = keywords_for_df[dataset]
 
             # Check each column for counting or filtering
             for column in dataset_info['columns']:
