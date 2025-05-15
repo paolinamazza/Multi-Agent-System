@@ -96,7 +96,6 @@ df_amministrati["income_bracket_max"] = (
     .astype(str).str.lower().str.replace("fino a", "", regex=False)
     .str.replace(".", "", regex=False)
     .str.strip()
-    .replace("", "0")  # opzionale: puoi rimuoverlo se vuoi che resti NaN
 )
 df_amministrati["income_bracket_max"] = pd.to_numeric(df_amministrati["income_bracket_max"], errors="coerce").astype("Int64")
 
